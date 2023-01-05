@@ -1,14 +1,24 @@
+import canvasState from '../store/canvasState'
+import toolState from '../store/toolState'
 import '../styles/toolbar.scss'
+import Brush from '../tools/Brush'
+import Rect from '../tools/Rect'
 
 export const ToolsBar = () => {
   return (
     <div className="toolbar">
-      <button className='toolbar__btn brush'></button>
-      <button className='toolbar__btn rect'></button>
+      <button
+        className='toolbar__btn brush'
+        onClick={() => toolState.setTool(new Brush(canvasState.canvas))}
+      ></button>
+      <button
+        className='toolbar__btn rect'
+        onClick={() => toolState.setTool(new Rect(canvasState.canvas))}
+      ></button>
       <button className='toolbar__btn circle'></button>
       <button className='toolbar__btn eraser'></button>
       <button className='toolbar__btn line'></button>
-      <input type="color" style={{marginLeft: 10}} />
+      <input type="color" style={{ marginLeft: 10 }} />
       {/* <button className='toolbar__btn image'></button> */}
       <button className='toolbar__btn undo'></button>
       <button className='toolbar__btn redo'></button>
